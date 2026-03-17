@@ -1,0 +1,132 @@
+{
+  "totalMarkets": 847,
+  "totalVolume": 1250000000,
+  "totalWashVolume": 312500000,
+  "avgWashPercent": 25,
+  "categoryBreakdown": [
+    {
+      "category": "Sports",
+      "washPercent": 45,
+      "totalVolume": 420000000,
+      "marketCount": 312
+    },
+    {
+      "category": "Election",
+      "washPercent": 17,
+      "totalVolume": 580000000,
+      "marketCount": 89
+    },
+    {
+      "category": "Crypto",
+      "washPercent": 8,
+      "totalVolume": 150000000,
+      "marketCount": 156
+    },
+    {
+      "category": "Politics",
+      "washPercent": 22,
+      "totalVolume": 65000000,
+      "marketCount": 178
+    },
+    {
+      "category": "Other",
+      "washPercent": 15,
+      "totalVolume": 35000000,
+      "marketCount": 112
+    }
+  ],
+  "topWashMarkets": [
+    {
+      "marketId": "0x3f2a1b",
+      "title": "Super Bowl LVIII Winner",
+      "category": "Sports",
+      "totalVolume": 2300000,
+      "washVolume": 1541000,
+      "washPercent": 67,
+      "suspiciousWallets": 23
+    },
+    {
+      "marketId": "0x8a1c2d",
+      "title": "NBA Finals 2025 Champion",
+      "category": "Sports",
+      "totalVolume": 1800000,
+      "washVolume": 1044000,
+      "washPercent": 58,
+      "suspiciousWallets": 18
+    },
+    {
+      "marketId": "0x2c9e4f",
+      "title": "Trump Approval Rating Above 50%",
+      "category": "Politics",
+      "totalVolume": 5100000,
+      "washVolume": 2295000,
+      "washPercent": 45,
+      "suspiciousWallets": 31
+    },
+    {
+      "marketId": "0x5d7f3a",
+      "title": "World Cup 2026 Winner",
+      "category": "Sports",
+      "totalVolume": 3200000,
+      "washVolume": 1344000,
+      "washPercent": 42,
+      "suspiciousWallets": 27
+    },
+    {
+      "marketId": "0x9b2e1c",
+      "title": "MLB World Series 2025",
+      "category": "Sports",
+      "totalVolume": 1500000,
+      "washVolume": 600000,
+      "washPercent": 40,
+      "suspiciousWallets": 15
+    },
+    {
+      "marketId": "0x4a8d2e",
+      "title": "Fed Rate Cut in March",
+      "category": "Politics",
+      "totalVolume": 8900000,
+      "washVolume": 3116000,
+      "washPercent": 35,
+      "suspiciousWallets": 42
+    },
+    {
+      "marketId": "0x7d4b5c",
+      "title": "Bitcoin $150K by EOY",
+      "category": "Crypto",
+      "totalVolume": 4500000,
+      "washVolume": 1035000,
+      "washPercent": 23,
+      "suspiciousWallets": 19
+    },
+    {
+      "marketId": "0x1e6f8a",
+      "title": "2025 Academy Awards Best Picture",
+      "category": "Other",
+      "totalVolume": 890000,
+      "washVolume": 178000,
+      "washPercent": 20,
+      "suspiciousWallets": 8
+    },
+    {
+      "marketId": "0xf1e3b7",
+      "title": "US GDP Growth Q1 2025",
+      "category": "Politics",
+      "totalVolume": 3200000,
+      "washVolume": 576000,
+      "washPercent": 18,
+      "suspiciousWallets": 14
+    },
+    {
+      "marketId": "0x6c9a4d",
+      "title": "Ethereum ETF Approval",
+      "category": "Crypto",
+      "totalVolume": 6700000,
+      "washVolume": 804000,
+      "washPercent": 12,
+      "suspiciousWallets": 11
+    }
+  ],
+  "updatedAt": "2025-03-17T09:00:00Z",
+  "source": "Columbia University Research (Nov 2024) + Dune Analytics"
+}
