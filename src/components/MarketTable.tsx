@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import type { MarketWashStats, Category } from '../types'
 
 interface MarketTableProps {
@@ -151,14 +152,15 @@ export function MarketTable({ markets }: MarketTableProps) {
           {/* Rows */}
           <div className="divide-y divide-border">
             {filteredAndSorted.map((market) => (
-              <div
+              <Link
                 key={market.marketId}
-                className="grid grid-cols-12 gap-2 py-2 text-sm hover:bg-surface/50 transition-colors"
+                to={`/market/${encodeURIComponent(market.title)}`}
+                className="grid grid-cols-12 gap-2 py-2 text-sm hover:bg-surface/50 transition-colors block cursor-pointer"
               >
                 <div className="col-span-1 text-text-muted text-xs truncate">
                   {market.marketId.slice(0, 8)}
                 </div>
-                <div className="col-span-5 text-text-primary truncate">
+                <div className="col-span-5 text-text-primary truncate hover:text-danger transition-colors">
                   {market.title}
                 </div>
                 <div className="col-span-3 flex items-center gap-2">
@@ -175,7 +177,7 @@ export function MarketTable({ markets }: MarketTableProps) {
                 <div className="col-span-1 text-text-muted text-xs uppercase">
                   {market.category.slice(0, 4)}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import type { MarketWashStats } from '../types'
 
 interface WashScoreCardProps {
@@ -21,7 +22,10 @@ export function WashScoreCard({ market }: WashScoreCardProps) {
   }
 
   return (
-    <div className="bg-surface border border-border p-4 hover:border-text-muted/30 transition-colors">
+    <Link
+      to={`/market/${encodeURIComponent(market.title)}`}
+      className="bg-surface border border-border p-4 hover:border-text-muted/30 transition-colors block"
+    >
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="flex-1 min-w-0">
           <h3 className="font-mono text-sm text-text-primary truncate mb-1">
@@ -69,6 +73,6 @@ export function WashScoreCard({ market }: WashScoreCardProps) {
         <span>{market.suspiciousWallets} suspicious wallets</span>
         <span className="text-text-muted/50">{market.marketId}</span>
       </div>
-    </div>
+    </Link>
   )
 }

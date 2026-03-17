@@ -83,6 +83,19 @@ export async function fetchMarkets(
   return fetchJson<PolymarketMarket[]>(`${GAMMA_API}/markets?${params}`)
 }
 
+export async function searchMarkets(
+  query: string,
+  limit = 5,
+): Promise<PolymarketMarket[]> {
+  const params = new URLSearchParams({
+    _q: query,
+    limit: String(limit),
+    order: 'volumeNum',
+    ascending: 'false',
+  })
+  return fetchJson<PolymarketMarket[]>(`${GAMMA_API}/markets?${params}`)
+}
+
 export async function fetchMarketTitle(
   conditionId: string,
 ): Promise<string | null> {

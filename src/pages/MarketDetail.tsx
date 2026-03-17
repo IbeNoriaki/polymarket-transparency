@@ -1,12 +1,13 @@
 import { useState, useEffect, useMemo } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Nav } from '../components/Nav'
 import { PnlDistribution } from '../components/PnlDistribution'
-import { fetchMarketPositions, fetchMarketTitle } from '../api/polymarket'
+import { fetchMarketPositions, fetchMarketTitle, searchMarkets } from '../api/polymarket'
 import type { MarketPosition, MarketPositionResponse } from '../types'
 
 export default function MarketDetail() {
   const { conditionId } = useParams<{ conditionId: string }>()
+  const navigate = useNavigate()
   const [positions, setPositions] = useState<MarketPosition[]>([])
   const [title, setTitle] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -15,10 +16,24 @@ export default function MarketDetail() {
   useEffect(() => {
     if (!conditionId) return
 
+    // If conditionId doesn't look like a hex hash, treat it as a search query
+    const isSearch = !conditionId.startsWith('0x')
+
     const load = async () => {
       setLoading(true)
       setError(null)
       try {
+        if (isSearch) {
+          const results = await searchMarkets(decodeURIComponent(conditionId), 1)
+          if (results.length > 0) {
+            navigate(`/market/${results[0].conditionId}`, { replace: true })
+            return
+          }
+          setError(`No market found for "${decodeURIComponent(conditionId)}"`)
+          setLoading(false)
+          return
+        }
+
         const [posData, marketTitle] = await Promise.all([
           fetchMarketPositions(conditionId, 'TOTAL_PNL', 'DESC', 100),
           fetchMarketTitle(conditionId),
@@ -38,7 +53,7 @@ export default function MarketDetail() {
       }
     }
     load()
-  }, [conditionId])
+  }, [conditionId, navigate])
 
   const totalPnlPositive = useMemo(
     () => positions.filter(p => p.totalPnl > 0).reduce((s, p) => s + p.totalPnl, 0),
