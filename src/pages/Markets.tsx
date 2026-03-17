@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import { MarketTable } from '../components/MarketTable'
+import { Nav } from '../components/Nav'
 import washStats from '../data/wash-stats.json'
 import type { OverallStats } from '../types'
 
@@ -8,20 +8,7 @@ export default function Markets() {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link
-            to="/"
-            className="font-mono text-sm text-text-muted hover:text-text-primary transition-colors"
-          >
-            ← Back to Overview
-          </Link>
-          <div className="font-mono text-xs text-text-muted">
-            {stats.totalMarkets} markets analyzed
-          </div>
-        </div>
-      </header>
+      <Nav />
 
       {/* Main content */}
       <main className="max-w-6xl mx-auto px-4 py-8">
