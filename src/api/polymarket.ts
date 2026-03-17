@@ -83,14 +83,14 @@ export async function fetchMarkets(
   return fetchJson<PolymarketMarket[]>(`${GAMMA_API}/markets?${params}`)
 }
 
-export async function fetchMarketByConditionId(
+export async function fetchMarketTitle(
   conditionId: string,
-): Promise<PolymarketMarket | null> {
+): Promise<string | null> {
   try {
-    const markets = await fetchJson<PolymarketMarket[]>(
-      `${GAMMA_API}/markets?condition_id=${conditionId}&limit=1`,
+    const trades = await fetchJson<Trade[]>(
+      `${DATA_API}/trades?market=${conditionId}&limit=1`,
     )
-    return markets[0] ?? null
+    return trades[0]?.title ?? null
   } catch {
     return null
   }

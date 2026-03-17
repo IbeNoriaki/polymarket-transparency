@@ -52,7 +52,7 @@ export function StatsHero({ stats }: StatsHeroProps) {
 
       {/* Category breakdown */}
       <div className="max-w-3xl mx-auto mb-12">
-        <h2 className="font-mono text-sm text-text-muted mb-4 tracking-widest">
+        <h2 className="font-mono text-base text-text-muted mb-4 tracking-widest">
           WASH TRADING BY CATEGORY
         </h2>
         <div className="space-y-3">

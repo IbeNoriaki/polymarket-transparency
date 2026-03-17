@@ -26,11 +26,11 @@ export function WalletSearch({ compact = false }: WalletSearchProps) {
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           placeholder="0x... wallet address"
-          className="bg-surface border border-border px-2 py-1 text-xs text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:border-text-muted font-mono w-48"
+          className="bg-surface border border-border px-2 py-2 text-xs text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:border-text-muted font-mono w-48"
         />
         <button
           type="submit"
-          className="bg-danger/20 border border-danger/30 border-l-0 px-2 py-1 text-xs text-danger font-mono hover:bg-danger/30 transition-colors"
+          className="bg-danger/20 border border-danger/30 border-l-0 px-3 py-2 text-xs text-danger font-mono hover:bg-danger/30 transition-colors"
         >
           SCAN
         </button>

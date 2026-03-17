@@ -2,13 +2,13 @@ import { useState, useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Nav } from '../components/Nav'
 import { PnlDistribution } from '../components/PnlDistribution'
-import { fetchMarketPositions, fetchMarketByConditionId } from '../api/polymarket'
-import type { MarketPosition, MarketPositionResponse, PolymarketMarket } from '../types'
+import { fetchMarketPositions, fetchMarketTitle } from '../api/polymarket'
+import type { MarketPosition, MarketPositionResponse } from '../types'
 
 export default function MarketDetail() {
   const { conditionId } = useParams<{ conditionId: string }>()
   const [positions, setPositions] = useState<MarketPosition[]>([])
-  const [market, setMarket] = useState<PolymarketMarket | null>(null)
+  const [title, setTitle] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -19,9 +19,9 @@ export default function MarketDetail() {
       setLoading(true)
       setError(null)
       try {
-        const [posData, marketData] = await Promise.all([
+        const [posData, marketTitle] = await Promise.all([
           fetchMarketPositions(conditionId, 'TOTAL_PNL', 'DESC', 100),
-          fetchMarketByConditionId(conditionId),
+          fetchMarketTitle(conditionId),
         ])
 
         const allPositions = posData.flatMap(
@@ -30,7 +30,7 @@ export default function MarketDetail() {
         allPositions.sort((a, b) => b.totalPnl - a.totalPnl)
 
         setPositions(allPositions)
-        setMarket(marketData)
+        setTitle(marketTitle)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load data')
       } finally {
@@ -57,17 +57,11 @@ export default function MarketDetail() {
         {/* Header */}
         <div className="mb-6">
           <h1 className="font-mono text-xl text-text-primary mb-2">
-            {market?.question ?? 'MARKET ANALYSIS'}
+            {title ?? 'MARKET ANALYSIS'}
           </h1>
           <div className="font-mono text-xs text-text-muted break-all">
             Condition ID: {conditionId}
           </div>
-          {market && (
-            <div className="flex gap-4 mt-2 font-mono text-xs text-text-muted">
-              <span>Volume: ${(market.volumeNum / 1_000_000).toFixed(2)}M</span>
-              <span>Status: {market.closed ? 'CLOSED' : 'ACTIVE'}</span>
-            </div>
-          )}
         </div>
 
         {error && (

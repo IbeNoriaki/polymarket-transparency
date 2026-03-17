@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { PnlHistogram } from './PnlHistogram'
 import type { MarketPosition } from '../types'
 
 interface PnlDistributionProps {
@@ -73,6 +74,9 @@ export function PnlDistribution({ positions, loading }: PnlDistributionProps) {
           </div>
         </div>
       </div>
+
+      {/* Histogram */}
+      <PnlHistogram positions={positions} />
 
       {/* PnL bar distribution */}
       <div className="mb-6">

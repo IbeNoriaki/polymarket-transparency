@@ -22,7 +22,7 @@ export function Nav() {
               <Link
                 key={to}
                 to={to}
-                className={`font-mono text-xs px-3 py-1.5 transition-colors ${
+                className={`font-mono text-xs px-3 py-2.5 transition-colors ${
                   location.pathname === to
                     ? 'text-danger border border-danger/30 bg-danger/10'
                     : 'text-text-muted hover:text-text-primary'
